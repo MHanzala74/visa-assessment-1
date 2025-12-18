@@ -1,0 +1,8 @@
+fastapi
+langchain
+langchain-openai
+langchain-core
+langchain-community
+supabase
+dotenv
+uvicorn
