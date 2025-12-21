@@ -7,3 +7,5 @@ supabase
 dotenv
 uvicorn
 python-jose
+bcrypt
+jwt

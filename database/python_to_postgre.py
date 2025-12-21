@@ -1,5 +1,6 @@
 import psycopg2
 import os
+import hashlib
 
 def get_connection():
     return psycopg2.connect(
@@ -38,3 +39,7 @@ def insert_data(id, name, score, visa_code, explanation):
     finally:
         cur.close()
         conn.close()
+
+
+
+
