@@ -1,12 +1,15 @@
 from fastapi import FastAPI
-from auth.routes import router as auth_router
-from visa_assessments.routes import router as visa_router
-
+from routes.auth_routes import router as auth_router
+from routes.visa_routes import router as visa_router
+from routes.profile_routes import router as profile_router
+from routes.graph_routes import router as graph_router
 
 app = FastAPI()
 
 app.include_router(auth_router)
 app.include_router(visa_router)
+app.include_router(profile_router)
+app.include_router(graph_router)
 
 @app.get("/health")
 def home():
