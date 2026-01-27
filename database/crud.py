@@ -81,7 +81,8 @@ def get_employee_by_phone(phone):
                 overseas_exp,
                 education_level,
                 marital_status,
-                language
+                english_test_type,
+                english_test_score
             FROM userprofile
             WHERE phone = %s
         """, (phone,))
@@ -103,13 +104,13 @@ def get_employee_by_phone(phone):
             "overseas_exp": row[9],
             "education_level": row[10],
             "marital_status": row[11],
-            "language": row[12]
+            "english_test_type": row[12],
+            "english_test_score": row[13]
         }
 
     finally:
         cur.close()
         conn.close()
-
 
 def create_table_if_not_exists():
     conn = get_connection()
@@ -144,7 +145,22 @@ def insert_data(user_name, score, subclass):
     conn.close()
 
 
-def profile_insert_data(first_name,last_name,email,phone,age,nationality,preferred_state,current_occupation,aus_experience,overseas_exp,education_level,marital_status,language):
+def profile_insert_data(
+    first_name,
+    last_name,
+    email,
+    phone,
+    age,
+    nationality,
+    preferred_state,
+    current_occupation,
+    aus_experience,
+    overseas_exp,
+    education_level,
+    marital_status,
+    english_test_type,
+    english_test_score
+):
     try:
         conn = get_connection()
         cur = conn.cursor()
@@ -165,7 +181,8 @@ def profile_insert_data(first_name,last_name,email,phone,age,nationality,preferr
                 overseas_exp INT,
                 education_level VARCHAR(50),
                 marital_status VARCHAR(50),
-                language VARCHAR(50)
+                english_test_type VARCHAR(20),
+                english_test_score FLOAT
             )
         """)
 
@@ -175,15 +192,28 @@ def profile_insert_data(first_name,last_name,email,phone,age,nationality,preferr
                 first_name, last_name, email, phone, age,
                 nationality, preferred_state, current_occupation,
                 aus_experience, overseas_exp, education_level,
-                marital_status,language
+                marital_status, english_test_type, english_test_score
             )
             VALUES (%s, %s, %s, %s, %s,
                     %s, %s, %s,
                     %s, %s, %s,
-                    %s,%s)
-        """, 
-        (first_name,last_name,email,phone,age,nationality,preferred_state,current_occupation,aus_experience,overseas_exp,education_level,marital_status,language)
-        )
+                    %s, %s, %s)
+        """, (
+            first_name,
+            last_name,
+            email,
+            phone,
+            age,
+            nationality,
+            preferred_state,
+            current_occupation,
+            aus_experience,
+            overseas_exp,
+            education_level,
+            marital_status,
+            english_test_type,
+            english_test_score
+        ))
 
         conn.commit()
         print("Data inserted successfully")
@@ -192,5 +222,7 @@ def profile_insert_data(first_name,last_name,email,phone,age,nationality,preferr
         print("DB Error:", e)
 
     finally:
-        cur.close()
-        conn.close()
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()

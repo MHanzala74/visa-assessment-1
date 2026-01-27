@@ -18,22 +18,16 @@ def visa_assessment(phone: str, user=Depends(authenticate)):
     first_name = employee["first_name"]
     last_name = employee["last_name"]
     age = employee["age"]
-    education_level = employee["education_level"]
+    education_level = employee["education_level"].strip().lower()
     aus_experience = employee["aus_experience"]
     overseas_exp = employee["overseas_exp"]
-    marital_status = employee["marital_status"]
-    language = employee["language"]
+    marital_status = employee["marital_status"].strip().lower()
+    english_test_type = employee["english_test_type"].strip().lower()
+    english_test_score = employee["english_test_score"]
 
     user_name = f"{first_name} {last_name}"
 
-    score = calculate_visa_logic(
-        age,
-        education_level,
-        aus_experience,
-        overseas_exp,
-        language,
-        marital_status
-    )
+    score = calculate_visa_logic(age=age, education_level=education_level, aus_experience=aus_experience,overseas_exp=overseas_exp, marital_status=marital_status,english_test_type=english_test_type,english_test_score=english_test_score)
 
     if score >= 85:
         subclass = 189
@@ -45,7 +39,7 @@ def visa_assessment(phone: str, user=Depends(authenticate)):
         subclass = 482
 
     explanation = generate_ai_explanation(
-        age, education_level, aus_experience, language, score, subclass
+        age, education_level, aus_experience, english_test_score, score, subclass
     )
 
     create_table_if_not_exists()

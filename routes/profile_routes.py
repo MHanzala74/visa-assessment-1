@@ -19,9 +19,10 @@ def user_profile(req:VisaProfile,user=Depends(authenticate)):
     overseas_exp = req.overseas_exp
     education_level = req.education_level
     marital_status = req.marital_status
-    language = req.language
+    english_test_score = req.english_test_score
+    english_test_type = req.english_test_type
 
-    profile_insert_data(first_name,last_name,email,phone,age,nationality,preferred_state,current_occupation,aus_experience,overseas_exp,education_level,marital_status,language)
+    profile_insert_data(first_name,last_name,email,phone,age,nationality,preferred_state,current_occupation,aus_experience,overseas_exp,education_level,marital_status,english_test_type,english_test_score)
 
     return {
         "message" : "Ok"

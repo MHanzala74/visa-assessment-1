@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def generate_ai_explanation(age,education,aus_experience,language,score,visa):
+def generate_ai_explanation(age,education,aus_experience,english_test_score,score,visa):
     llm = ChatOpenAI()
     prompt = PromptTemplate(
         template="""
@@ -27,11 +27,11 @@ def generate_ai_explanation(age,education,aus_experience,language,score,visa):
         
         Keep the response detailed but easy to understand.
     """,
-    input_variables=['age','education','aus_experience','language','score','visa']
+    input_variables=['age','education','aus_experience','english_test_score','score','visa']
     )
 
     chain = prompt | llm | StrOutputParser()
 
-    result = chain.invoke({'age':age,'education':education,'aus_experience':aus_experience,'language':language,'score':score,'visa':visa})
+    result = chain.invoke({'age':age,'education':education,'aus_experience':aus_experience,'language':english_test_score,'score':score,'visa':visa})
 
     return result

@@ -10,3 +10,7 @@ python-jose
 bcrypt
 jwt
 psycopg2
+pydantic[email]
+email-validator
+python-multipart
+pypdf
