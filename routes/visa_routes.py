@@ -4,7 +4,6 @@ from services.visa_service import calculate_visa_logic
 from services.ai_explanation_service import generate_ai_explanation
 from database.crud import get_employee_by_phone, insert_data, create_table_if_not_exists
 
-
 router = APIRouter()
 
 @router.get("/visa/{phone}")

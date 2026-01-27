@@ -8,7 +8,7 @@ load_dotenv()
 
 
 def generate_ai_explanation(age,education,aus_experience,english_test_score,score,visa):
-    llm = ChatOpenAI()
+    llm = ChatOpenAI(model="deepseek-chat",api_key=os.getenv("DEEPSEEK_API_KEY"),base_url="https://api.deepseek.com/v1")
     prompt = PromptTemplate(
         template="""
         You are an Australian visa consultant.
