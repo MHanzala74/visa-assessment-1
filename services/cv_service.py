@@ -1,9 +1,11 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
+
 load_dotenv()
 
 def resume_analyze(file_path: str):
@@ -14,7 +16,7 @@ def resume_analyze(file_path: str):
     for doc in documents:
         resume_text += doc.page_content + "\n"
 
-    model = ChatOpenAI(model="deepseek-chat",api_key=os.getenv("DEEPSEEK_API_KEY"),base_url="https://api.deepseek.com/v1")
+    model = ChatGroq(model = model, api_key=os.getenv("GROQ_API_KEY"))
 
     parser = StrOutputParser()
 

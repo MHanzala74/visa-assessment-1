@@ -1,5 +1,6 @@
 import requests 
 import os 
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -8,7 +9,7 @@ load_dotenv()
 
 
 def generate_ai_explanation(age,education,aus_experience,english_test_score,score,visa):
-    llm = ChatOpenAI(model="deepseek-chat",api_key=os.getenv("DEEPSEEK_API_KEY"),base_url="https://api.deepseek.com/v1")
+    llm = model = ChatGroq(model = model, api_key=os.getenv("GROQ_API_KEY"))
     prompt = PromptTemplate(
         template="""
         You are an Australian visa consultant.
