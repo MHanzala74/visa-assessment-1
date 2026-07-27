@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from routes.auth_routes import router as auth_router
 from routes.visa_routes import router as visa_router
 from routes.profile_routes import router as profile_router
@@ -7,6 +8,14 @@ from routes.cv_routes import router as cv_router
 import matplotlib
 matplotlib.use("Agg")
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(auth_router)
 app.include_router(visa_router)
