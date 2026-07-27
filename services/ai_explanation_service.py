@@ -9,7 +9,7 @@ load_dotenv()
 
 
 def generate_ai_explanation(age,education,aus_experience,english_test_score,score,visa):
-    llm = model = ChatGroq(model = model, api_key=os.getenv("GROQ_API_KEY"))
+    llm = ChatGroq(model="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY"))
     prompt = PromptTemplate(
         template="""
         You are an Australian visa consultant.

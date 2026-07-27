@@ -16,7 +16,7 @@ def resume_analyze(file_path: str):
     for doc in documents:
         resume_text += doc.page_content + "\n"
 
-    model = ChatGroq(model = model, api_key=os.getenv("GROQ_API_KEY"))
+    model = ChatGroq(model="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY"))
 
     parser = StrOutputParser()
 
