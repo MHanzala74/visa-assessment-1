@@ -7,7 +7,6 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 load_dotenv()
 
-
 def generate_ai_explanation(age,education,aus_experience,english_test_score,score,visa):
     llm = ChatGroq(model="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY"))
     prompt = PromptTemplate(

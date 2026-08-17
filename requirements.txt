@@ -16,3 +16,7 @@ python-multipart
 pypdf
 matplotlib
 langchain-groq
+chromadb
+pypdf
+sentence-transformers
+langchain_text_splitters
