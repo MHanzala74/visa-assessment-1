@@ -1,9 +1,9 @@
 import os
 import shutil
 from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
-from app.schemas.rag import RAGQueryRequest, RAGQueryResponse
-from app.services.rag.chain import generate_rag_response
-from app.services.rag.ingest import ingest_documents, DATA_DIR
+from schemas.rag_schema import RAGQueryRequest, RAGQueryResponse
+from services.rag.chain import generate_rag_response
+from services.rag.ingest import ingest_documents, DATA_DIR
 from routes.auth_routes import authenticate
 
 router = APIRouter()

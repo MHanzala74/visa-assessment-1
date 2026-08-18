@@ -226,3 +226,4 @@ def profile_insert_data(
             cur.close()
         if conn:
             conn.close()
+            

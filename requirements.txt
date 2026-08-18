@@ -4,7 +4,7 @@ langchain-openai
 langchain-core
 langchain-community
 supabase
-dotenv
+python-dotenv
 uvicorn
 python-jose
 bcrypt
@@ -17,6 +17,4 @@ pypdf
 matplotlib
 langchain-groq
 chromadb
-pypdf
-sentence-transformers
 langchain_text_splitters

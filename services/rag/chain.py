@@ -1,9 +1,9 @@
 import os
-from langchain_openai import ChatOpenAI  # <-- [UPDATED]
+from langchain_openai import ChatOpenAI  
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from app.services.rag.retriever import get_retriever
+from services.rag.retriever import get_retriever
 
 PROMPT_TEMPLATE = """
 You are an expert AI Visa Consultant assistant. Use the following official visa guidelines and context to answer the user's question accurately.
